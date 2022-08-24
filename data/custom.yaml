@@ -1,0 +1,8 @@
+train: /home/crist_tienngoc/alcon_spc/dataset/train.txt
+val: /home/crist_tienngoc/alcon_spc/dataset/val.txt
+test: /home/crist_tienngoc/alcon_spc/dataset/test.txt 
+
+nc: 21
+
+names: ['AB', 'BCE', 'CE', 'CT', 'DB', 'DC', 'DE', 'EG', 'EHaCM', 'ET', 
+        'HO', 'IB', 'LT', 'MC', 'MF', 'PI', 'RM', 'SB', 'SI', 'SwC', 'WS']

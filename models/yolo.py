@@ -78,7 +78,10 @@ class Detect(nn.Module):
 
     @staticmethod
     def _make_grid(nx=20, ny=20):
-        yv, xv = torch.meshgrid([torch.arange(ny), torch.arange(nx)])
+        # yv, xv = torch.meshgrid([torch.arange(ny), torch.arange(nx)])
+        # return torch.stack((xv, yv), 2).view((1, 1, ny, nx, 2)).float()
+        yv, xv = torch.meshgrid(torch.arange(ny), torch.arange(nx), indexing='ij')
+        #yv, xv = torch.meshgrid(torch.arange(ny), torch.arange(nx))
         return torch.stack((xv, yv), 2).view((1, 1, ny, nx, 2)).float()
 
     def convert(self, z):
@@ -509,6 +512,7 @@ class Model(nn.Module):
     def __init__(self, cfg='yolor-csp-c.yaml', ch=3, nc=None, anchors=None):  # model, input channels, number of classes
         super(Model, self).__init__()
         self.traced = False
+        #self.nc = 3
         if isinstance(cfg, dict):
             self.yaml = cfg  # model dict
         else:  # is *.yaml
